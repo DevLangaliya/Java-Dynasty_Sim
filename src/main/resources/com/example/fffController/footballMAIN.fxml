@@ -1,0 +1,766 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<TabPane fx:id="allTabs" maxHeight="600.0" maxWidth="800.0" minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Green; -fx-border-color: Black; -fx-border-width: 5;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fffController.HelloController">
+   <Tab text="Register Coach">
+      <AnchorPane fx:id="regTab" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <ComboBox fx:id="teamSelectStart" layoutX="129.0" layoutY="43.0" onAction="#chooseTeam" prefHeight="68.0" prefWidth="532.0" promptText="Select Team" style="-fx-border-color: Black; -fx-border-width: 3;" />
+         <Button layoutX="238.0" layoutY="166.0" mnemonicParsing="false" onAction="#selectTeamStart" prefHeight="70.0" prefWidth="314.0" style="-fx-background-color: Green; -fx-border-color: Black; -fx-border-width: 3;" text="CONFIRM TEAM CHOICE" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+            </font>
+         </Button>
+         <ImageView fx:id="teamLogo" fitHeight="264.0" fitWidth="314.0" layoutX="81.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+         <ProgressBar fx:id="offRat" layoutX="552.0" layoutY="279.0" prefWidth="200.0" progress="0.0" />
+         <ProgressBar fx:id="ovrRat" layoutX="552.0" layoutY="517.0" prefWidth="200.0" progress="0.0" />
+         <ProgressBar fx:id="defRat" layoutX="552.0" layoutY="348.0" prefWidth="200.0" progress="0.0" />
+         <Label layoutX="395.0" layoutY="279.0" text="OFFENSE RATING" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="395.0" layoutY="358.0" text="DEFENSE RATING" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="395.0" layoutY="516.0" text="OVERALL RATING" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="395.0" layoutY="436.0" text="PLAY TENDENCIES" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="16.0" />
+            </font>
+         </Label>
+         <ProgressBar fx:id="selectPlayTend" layoutX="591.0" layoutY="438.0" prefHeight="20.0" prefWidth="122.0" progress="0.0" />
+         <Label layoutX="721.0" layoutY="437.0" text="RUN" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="16.0" />
+            </font>
+         </Label>
+         <Label layoutX="552.0" layoutY="437.0" text="PASS" textFill="WHITE">
+            <font>
+               <Font name="Apple SD Gothic Neo Regular" size="16.0" />
+            </font>
+         </Label>
+      </AnchorPane>
+   </Tab>
+   <Tab text="Home View">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <ImageView fx:id="homeTeamLogo" fitHeight="250.0" fitWidth="250.0" layoutX="17.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" />
+               <Label fx:id="homeTeamName" alignment="CENTER" layoutX="17.0" layoutY="14.0" prefHeight="80.0" prefWidth="757.0" text="TEAM NAME" textFill="WHITE">
+                  <font>
+                     <Font size="32.0" />
+                  </font>
+               </Label>
+               <ListView fx:id="standingTeamRankings" layoutX="510.0" layoutY="143.0" prefHeight="402.0" prefWidth="264.0" />
+               <ListView fx:id="tradeOffers" layoutX="296.0" layoutY="143.0" onMouseClicked="#selectTrade" prefHeight="150.0" prefWidth="200.0" />
+               <Button fx:id="counterTrade" disable="true" layoutX="296.0" layoutY="335.0" mnemonicParsing="false" onAction="#counterTrade" prefHeight="40.0" prefWidth="200.0" text="COUNTER" />
+               <Button fx:id="accTrade" disable="true" layoutX="296.0" layoutY="295.0" mnemonicParsing="false" onAction="#acceptTrade" prefHeight="40.0" prefWidth="100.0" text="ACCEPT" />
+               <Button fx:id="declineTrade" disable="true" layoutX="396.0" layoutY="295.0" mnemonicParsing="false" onAction="#declineTrade" prefHeight="40.0" prefWidth="100.0" text="DECLINE" />
+               <Label fx:id="tradeInfo" alignment="TOP_LEFT" layoutX="296.0" layoutY="379.0" prefHeight="171.0" prefWidth="200.0" text="trade information" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+               <Label fx:id="needs" layoutX="17.0" layoutY="143.0" prefHeight="150.0" prefWidth="250.0" text="TEAM NEEDS" textFill="WHITE" />
+            </children>
+         </AnchorPane>
+     </content>
+   </Tab>
+   <Tab text="Roster View">
+      <content>
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <ListView fx:id="rosterList" layoutX="14.0" layoutY="47.0" onMouseClicked="#selectPlayerFromRoster" prefHeight="392.0" prefWidth="242.0" style="-fx-border-color: Black; -fx-border-width: 3;" />
+               <TextField fx:id="rosterSearch" layoutX="14.0" layoutY="18.0" onKeyTyped="#filterRosterSearch" prefHeight="29.0" prefWidth="242.0" promptText="Enter Player Name" style="-fx-border-color: Black; -fx-border-width: 3;" />
+               <Label fx:id="rosterPName" alignment="CENTER" layoutX="299.0" layoutY="76.0" prefHeight="63.0" prefWidth="453.0" text="Click on a player to view info" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showRatingOVR" alignment="CENTER" layoutX="300.0" layoutY="139.0" prefHeight="47.0" prefWidth="219.0" text="OVR" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="38.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="playerRating" layoutX="309.0" layoutY="186.0" prefWidth="200.0" progress="0.0" />
+               <ProgressBar fx:id="playerCaliber" layoutX="543.0" layoutY="186.0" prefWidth="200.0" progress="0.0" />
+               <Label fx:id="showRatingCAL" alignment="CENTER" layoutX="533.0" layoutY="139.0" prefHeight="47.0" prefWidth="219.0" text="CAL" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="38.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showAge" alignment="CENTER" layoutX="378.0" layoutY="207.0" prefHeight="34.0" prefWidth="63.0" text="AGE" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="15.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="playerAGI" layoutX="309.0" layoutY="279.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerSTR" layoutX="468.0" layoutY="279.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerCAT" layoutX="628.0" layoutY="279.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerTHP" layoutX="309.0" layoutY="361.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerTHA" layoutX="468.0" layoutY="361.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerBLK" layoutX="628.0" layoutY="361.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerBSH" layoutX="309.0" layoutY="443.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerTKL" layoutX="468.0" layoutY="441.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerCOV" layoutX="628.0" layoutY="441.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerKPW" layoutX="309.0" layoutY="525.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerKPA" layoutX="468.0" layoutY="525.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <ProgressBar fx:id="playerINJ" layoutX="628.0" layoutY="525.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="showAGI" alignment="CENTER" layoutX="309.0" layoutY="246.0" prefHeight="33.0" prefWidth="115.0" text="AGI" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showCAT" alignment="CENTER" layoutX="628.0" layoutY="246.0" prefHeight="33.0" prefWidth="115.0" text="CAT" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showTHP" alignment="CENTER" layoutX="309.0" layoutY="328.0" prefHeight="33.0" prefWidth="115.0" text="THP" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showSTR" alignment="CENTER" layoutX="468.0" layoutY="246.0" prefHeight="33.0" prefWidth="115.0" text="STR" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showBLK" alignment="CENTER" layoutX="628.0" layoutY="328.0" prefHeight="33.0" prefWidth="115.0" text="BLK" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showTHA" alignment="CENTER" layoutX="468.0" layoutY="328.0" prefHeight="33.0" prefWidth="115.0" text="THA" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showBSH" alignment="CENTER" layoutX="309.0" layoutY="410.0" prefHeight="33.0" prefWidth="115.0" text="BSH" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showCOV" alignment="CENTER" layoutX="628.0" layoutY="410.0" prefHeight="33.0" prefWidth="115.0" text="COV" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showTKL" alignment="CENTER" layoutX="468.0" layoutY="410.0" prefHeight="33.0" prefWidth="115.0" text="TKL" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showKPW" alignment="CENTER" layoutX="309.0" layoutY="492.0" prefHeight="33.0" prefWidth="115.0" text="KPW" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showINJ" alignment="CENTER" layoutX="628.0" layoutY="492.0" prefHeight="33.0" prefWidth="115.0" text="INJ" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="showKPA" alignment="CENTER" layoutX="468.0" layoutY="492.0" prefHeight="33.0" prefWidth="115.0" text="KPA" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Label fx:id="teamName" alignment="CENTER" layoutX="269.0" layoutY="14.0" prefHeight="67.0" prefWidth="361.0" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="30.0" />
+                  </font>
+               </Label>
+               <Button layoutX="14.0" layoutY="488.0" mnemonicParsing="false" onAction="#releaseSelP" prefHeight="54.0" prefWidth="242.0" style="-fx-border-color: Black; -fx-border-width: 3; -fx-background-color: Green;" text="RELEASE PLAYER" textFill="WHITE">
+                  <font>
+                     <Font size="26.0" />
+                  </font>
+               </Button>
+               <Button layoutX="14.0" layoutY="436.0" mnemonicParsing="false" onAction="#addToTradeBlock" prefHeight="54.0" prefWidth="242.0" style="-fx-border-color: Black; -fx-border-width: 3; -fx-background-color: Green;" text="ADD/REMOVE FROM TRADE BLOCK" textFill="WHITE" />
+               <Label fx:id="record" alignment="CENTER" layoutX="630.0" layoutY="14.0" prefHeight="57.0" prefWidth="150.0" textFill="WHITE">
+                  <font>
+                     <Font size="30.0" />
+                  </font>
+               </Label>
+               <ImageView fx:id="rosterLogo" disable="true" fitHeight="400.0" fitWidth="400.0" layoutX="326.0" layoutY="15.0" opacity="0.21" pickOnBounds="true" preserveRatio="true" />
+               <Label fx:id="trdStat" layoutX="555.0" layoutY="215.0" prefHeight="19.0" prefWidth="176.0" text="TRADE STATUS" textFill="WHITE">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+      </content>
+   </Tab>
+   <Tab fx:id="weekSchedule" text="Schedule View">
+      <content>
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <GridPane fx:id="scheduleGrid" gridLinesVisible="true" layoutX="14.0" layoutY="14.0" prefHeight="467.0" prefWidth="765.0">
+                 <columnConstraints>
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="90.0" />
+                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                 </columnConstraints>
+                 <rowConstraints>
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                 </rowConstraints>
+                  <children>
+                     <GridPane>
+                       <columnConstraints>
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                       </columnConstraints>
+                       <rowConstraints>
+                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                       </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </GridPane>
+                     <GridPane GridPane.rowIndex="1">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.rowIndex="2">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.rowIndex="3">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.rowIndex="4">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane prefWidth="379.0" GridPane.rowIndex="5">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.rowIndex="6">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.rowIndex="7">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <columnConstraints>
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="121.0" minWidth="10.0" prefWidth="56.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="263.0" />
+                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="98.0" minWidth="10.0" prefWidth="60.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                           <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
+                           <Label alignment="CENTER" prefHeight="60.0" prefWidth="264.0" text="GAME WAHOO" textAlignment="CENTER" textFill="WHITE" wrapText="true" GridPane.columnIndex="1">
+                              <font>
+                                 <Font name="Apple SD Gothic Neo Regular" size="13.0" />
+                              </font>
+                           </Label>                        </children>
+                     </GridPane>
+                  </children>
+               </GridPane>
+               <Button layoutX="188.0" layoutY="481.0" mnemonicParsing="false" onAction="#userGame" prefHeight="69.0" prefWidth="205.0" style="-fx-border-color: Black; -fx-border-width: 3;" text="PLAY YOUR GAME">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="21.0" />
+                  </font>
+               </Button>
+               <Button layoutX="14.0" layoutY="481.0" mnemonicParsing="false" onAction="#simOtherGames" prefHeight="69.0" prefWidth="177.0" style="-fx-border-color: Black; -fx-border-width: 3;" text="SIM GAMES">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="21.0" />
+                  </font>
+               </Button>
+               <Button layoutX="590.0" layoutY="481.0" mnemonicParsing="false" onAction="#advanceWeek" prefHeight="69.0" prefWidth="189.0" style="-fx-border-color: Black; -fx-border-width: 3;" text="ADVANCE WEEK">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="21.0" />
+                  </font>
+               </Button>
+               <Button alignment="CENTER" layoutX="393.0" layoutY="482.0" mnemonicParsing="false" onAction="#simWeeks" prefHeight="67.0" prefWidth="131.0" style="-fx-border-color: Black; -fx-border-width: 3;" text="SIM WEEKS">
+                  <font>
+                     <Font size="19.0" />
+                  </font>
+               </Button>
+               <TextField fx:id="weekNumToSim" layoutX="524.0" layoutY="482.0" prefHeight="67.0" prefWidth="67.0" style="-fx-border-color: Black; -fx-border-width: 3;" text="16">
+                  <font>
+                     <Font size="25.0" />
+                  </font>
+               </TextField>
+            </children></AnchorPane>
+      </content>
+   </Tab>
+   <Tab text="Trade Screen">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <ListView fx:id="userTradeRoster" layoutX="14.0" layoutY="19.0" prefHeight="400.0" prefWidth="200.0" />
+               <ListView fx:id="oppTradeRoster" layoutX="576.0" layoutY="52.0" prefHeight="367.0" prefWidth="200.0" />
+               <ComboBox fx:id="tradeRecipient" layoutX="576.0" layoutY="20.0" onAction="#chooseRecipient" prefHeight="29.0" prefWidth="200.0" promptText="CHOOSE RECIPIENT" />
+               <ListView fx:id="userTradeOffering" layoutX="214.0" layoutY="52.0" prefHeight="200.0" prefWidth="170.0" />
+               <ListView fx:id="userTradeRequest" layoutX="406.0" layoutY="52.0" prefHeight="200.0" prefWidth="170.0" />
+               <Button alignment="CENTER" layoutX="214.0" layoutY="307.0" mnemonicParsing="false" onAction="#offerTrade" prefHeight="99.0" prefWidth="363.0" style="-fx-background-color: Green; -fx-border-color: Black; -fx-border-width: 5;" text="OFFER TRADE" textFill="WHITE">
+                  <font>
+                     <Font size="40.0" />
+                  </font>
+               </Button>
+               <Label fx:id="offerVal" alignment="CENTER" layoutX="214.0" layoutY="252.0" prefHeight="55.0" prefWidth="170.0" text="VALUE: " textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+                  </font>
+               </Label>
+               <Label fx:id="requestVal" alignment="CENTER" layoutX="406.0" layoutY="252.0" prefHeight="55.0" prefWidth="170.0" text="VALUE: " textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="18.0" />
+                  </font>
+               </Label>
+               <Label layoutX="259.0" layoutY="34.0" text="Your Offerings" textFill="WHITE" />
+               <Label layoutX="451.0" layoutY="34.0" text="Your Requests" textFill="WHITE" />
+               <Button fx:id="addOffer" disable="true" layoutX="14.0" layoutY="419.0" mnemonicParsing="false" onAction="#addPlayerToOffer" prefHeight="40.0" prefWidth="200.0" text="ADD TO TRADE" />
+               <Button fx:id="addRequest" disable="true" layoutX="576.0" layoutY="419.0" mnemonicParsing="false" onAction="#addPlayerToRequest" prefHeight="40.0" prefWidth="200.0" text="ADD TO TRADE" />
+               <Label fx:id="tradeDecision" alignment="CENTER" layoutX="220.0" layoutY="417.0" prefHeight="125.0" prefWidth="350.0" text="DECISION" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <font>
+                     <Font size="22.0" />
+                  </font>
+               </Label>
+               <Button fx:id="removeOffer" disable="true" layoutX="14.0" layoutY="460.0" mnemonicParsing="false" onAction="#removePlayerFromOffer" prefHeight="40.0" prefWidth="200.0" text="REMOVE FROM TRADE" />
+               <Button fx:id="removeRequest" disable="true" layoutX="576.0" layoutY="460.0" mnemonicParsing="false" onAction="#removePlayerFromRequest" prefHeight="40.0" prefWidth="200.0" text="REMOVE FROM TRADE" />
+            </children>
+         </AnchorPane>
+     </content>
+   </Tab>
+   <Tab text="Free Agents">
+      <content>
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <ListView fx:id="faList" layoutX="114.0" layoutY="100.0" onMouseClicked="#selectPlayerFromFA" prefHeight="453.0" prefWidth="234.0" style="-fx-border-color: Black; -fx-border-width: 3;" />
+               <ToggleButton fx:id="filterQB" layoutX="14.0" layoutY="100.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="QB" />
+               <ToggleButton fx:id="filterHB" layoutX="14.0" layoutY="136.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="HB" />
+               <ToggleButton fx:id="filterWR" layoutX="14.0" layoutY="172.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="WR" />
+               <ToggleButton fx:id="filterOL" layoutX="14.0" layoutY="208.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="OL" />
+               <ToggleButton fx:id="filterDL" layoutX="14.0" layoutY="244.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="DL" />
+               <ToggleButton fx:id="filterLB" layoutX="14.0" layoutY="280.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="LB" />
+               <ToggleButton fx:id="filterCB" layoutX="14.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="CB" />
+               <ToggleButton fx:id="filterS" layoutX="14.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="S" />
+               <ToggleButton fx:id="filterK" layoutX="14.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="K" />
+               <TextField fx:id="faSearch" layoutX="114.0" layoutY="74.0" prefHeight="26.0" prefWidth="234.0" promptText="Enter Player Name" />
+               <Label fx:id="PNameFA" alignment="CENTER" layoutX="367.0" layoutY="-1.0" prefHeight="43.0" prefWidth="412.0" text="Click on a player to view info" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+                  </font>
+               </Label>
+               <Label fx:id="FAshowAge" alignment="CENTER" layoutX="545.0" layoutY="139.0" prefHeight="20.0" prefWidth="60.0" text="AGE" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="15.0" />
+                  </font>
+               </Label>
+               <Label fx:id="FAshowRatingOVR" alignment="CENTER" layoutX="355.0" layoutY="61.0" prefHeight="47.0" prefWidth="219.0" text="OVR" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="38.0" />
+                  </font>
+               </Label>
+               <Label fx:id="FAshowRatingCAL" alignment="CENTER" layoutX="576.0" layoutY="62.0" prefHeight="47.0" prefWidth="219.0" text="CAL" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="38.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FARating" layoutX="367.0" layoutY="111.0" prefWidth="200.0" progress="0.0" />
+               <ProgressBar fx:id="FACaliber" layoutX="583.0" layoutY="111.0" prefWidth="200.0" progress="0.0" />
+               <ProgressBar fx:id="FAAGI" layoutX="366.0" layoutY="198.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowAGI" alignment="CENTER" layoutX="366.0" layoutY="169.0" prefHeight="33.0" prefWidth="115.0" text="AGI" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FASTR" layoutX="517.0" layoutY="198.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowSTR" alignment="CENTER" layoutX="517.0" layoutY="169.0" prefHeight="33.0" prefWidth="115.0" text="STR" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FACAT" layoutX="666.0" layoutY="198.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowCAT" alignment="CENTER" layoutX="666.0" layoutY="169.0" prefHeight="33.0" prefWidth="115.0" text="CAT" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FATHP" layoutX="366.0" layoutY="298.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowTHP" alignment="CENTER" layoutX="366.0" layoutY="269.0" prefHeight="33.0" prefWidth="115.0" text="THP" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FATHA" layoutX="517.0" layoutY="298.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowTHA" alignment="CENTER" layoutX="517.0" layoutY="269.0" prefHeight="33.0" prefWidth="115.0" text="THA" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FABLK" layoutX="666.0" layoutY="298.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowBLK" alignment="CENTER" layoutX="666.0" layoutY="269.0" prefHeight="33.0" prefWidth="115.0" text="BLK" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FABSH" layoutX="367.0" layoutY="396.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowBSH" alignment="CENTER" layoutX="367.0" layoutY="367.0" prefHeight="33.0" prefWidth="115.0" text="BSH" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FATKL" layoutX="518.0" layoutY="396.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowTKL" alignment="CENTER" layoutX="519.0" layoutY="367.0" prefHeight="33.0" prefWidth="115.0" text="TKL" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FACOV" layoutX="667.0" layoutY="396.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowCOV" alignment="CENTER" layoutX="667.0" layoutY="367.0" prefHeight="33.0" prefWidth="115.0" text="COV" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FAKPW" layoutX="366.0" layoutY="497.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowKPW" alignment="CENTER" layoutX="366.0" layoutY="468.0" prefHeight="33.0" prefWidth="115.0" text="KPW" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FAKPA" layoutX="517.0" layoutY="497.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowKPA" alignment="CENTER" layoutX="517.0" layoutY="468.0" prefHeight="33.0" prefWidth="115.0" text="KPA" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <ProgressBar fx:id="FAINJ" layoutX="666.0" layoutY="497.0" prefHeight="20.0" prefWidth="115.0" progress="0.0" />
+               <Label fx:id="FAshowINJ" alignment="CENTER" layoutX="666.0" layoutY="468.0" prefHeight="33.0" prefWidth="115.0" text="INJ" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font name="Apple SD Gothic Neo Regular" size="25.0" />
+                  </font>
+               </Label>
+               <Spinner fx:id="filterFAAGE" layoutX="14.0" layoutY="458.0" prefHeight="26.0" prefWidth="100.0" />
+               <Spinner fx:id="filterFAOVR" layoutX="14.0" layoutY="423.0" prefHeight="26.0" prefWidth="100.0" />
+               <Button layoutX="114.0" layoutY="21.0" mnemonicParsing="false" onAction="#signFA" prefHeight="52.0" prefWidth="233.0" style="-fx-background-color: Green; -fx-border-color: Black; -fx-border-width: 3;" text="SIGN" textFill="WHITE">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Button>
+            </children>
+         </AnchorPane>
+      </content>
+   </Tab>
+   <Tab text="Stats">
+      <content>
+         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <ListView fx:id="passYDLeaders" layoutX="14.0" layoutY="31.0" prefHeight="183.0" prefWidth="166.0" />
+               <Button fx:id="btnOpenStatView" alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="491.0" mnemonicParsing="false" onAction="#openStatComp" prefHeight="73.0" prefWidth="718.0" style="-fx-background-color: Green; -fx-border-color: Black; -fx-border-width: 6;" text="CLICK TO VIEW TOP 5 PLAYERS FOR SELECTED STAT" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="28.0" />
+                  </font></Button>
+               <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="166.0" text="PASSING YARDS LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <ListView fx:id="rushYDLeaders" layoutX="381.0" layoutY="31.0" prefHeight="183.0" prefWidth="166.0" />
+               <ListView fx:id="recLeaders" layoutX="565.0" layoutY="31.0" prefHeight="183.0" prefWidth="166.0" />
+               <ListView fx:id="tklLeaders" layoutX="198.0" layoutY="279.0" prefHeight="183.0" prefWidth="166.0" />
+               <ListView fx:id="recYDLeaders" layoutX="14.0" layoutY="279.0" prefHeight="183.0" prefWidth="166.0" />
+               <ListView fx:id="sackLeaders" layoutX="381.0" layoutY="279.0" prefHeight="183.0" prefWidth="166.0" />
+               <ListView fx:id="defLeaders" layoutX="565.0" layoutY="279.0" prefHeight="183.0" prefWidth="166.0" />
+               <ListView fx:id="passTDLeaders" layoutX="198.0" layoutY="31.0" prefHeight="183.0" prefWidth="166.0" />
+               <Label alignment="CENTER" layoutX="198.0" layoutY="14.0" prefHeight="17.0" prefWidth="166.0" text="PASSING TDS LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <Label alignment="CENTER" layoutX="381.0" layoutY="14.0" prefHeight="17.0" prefWidth="166.0" text="RUSHING YARDS LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <Label alignment="CENTER" layoutX="565.0" layoutY="14.0" prefHeight="17.0" prefWidth="166.0" text="RECEPTION LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <Label alignment="CENTER" layoutX="14.0" layoutY="262.0" prefHeight="17.0" prefWidth="166.0" text="RECIEVING YARD LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <Label alignment="CENTER" layoutX="198.0" layoutY="262.0" prefHeight="17.0" prefWidth="166.0" text="TACKLE LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <Label alignment="CENTER" layoutX="381.0" layoutY="262.0" prefHeight="17.0" prefWidth="166.0" text="SACK LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <Label alignment="CENTER" layoutX="565.0" layoutY="262.0" prefHeight="17.0" prefWidth="166.0" text="DEFLECTION LEADERS" textAlignment="CENTER" textFill="WHITE" />
+               <CheckBox fx:id="comp0" layoutX="27.0" layoutY="214.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp1" layoutX="211.0" layoutY="214.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp4" layoutX="27.0" layoutY="462.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp5" layoutX="211.0" layoutY="462.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp6" layoutX="394.0" layoutY="462.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp2" layoutX="394.0" layoutY="214.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp3" layoutX="578.0" layoutY="214.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+               <CheckBox fx:id="comp7" layoutX="578.0" layoutY="462.0" mnemonicParsing="false" text="COMPARE LEADERS" textFill="WHITE" />
+            </children>
+         </AnchorPane>
+      </content>
+   </Tab>
+   <Tab fx:id="recap" disable="true" text="Recap">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <children>
+               <Label layoutX="26.0" layoutY="14.0" prefHeight="148.0" prefWidth="738.0" text="THE SEASON IS OVER" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="76.0" />
+                  </font>
+               </Label>
+               <Label fx:id="placement" alignment="CENTER" layoutX="42.0" layoutY="162.0" prefHeight="82.0" prefWidth="706.0" style="-fx-border-color: Black; -fx-border-width: 5;" text="YOU PLACED" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <font>
+                     <Font size="25.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+     </content>
+   </Tab>
+</TabPane>

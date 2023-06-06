@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fffController.StatViewController">
+   <children>
+      <LineChart fx:id="statComparison" layoutX="15.0" layoutY="14.0" prefHeight="188.0" prefWidth="570.0">
+        <xAxis>
+          <NumberAxis lowerBound="1.0" minorTickCount="1" side="BOTTOM" upperBound="15.0" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </LineChart>
+   </children>
+</AnchorPane>
