@@ -127,6 +127,7 @@ public class Game {
                 ytg = 10;
                 possession++;
             }
+            System.out.println();
         } else if(outcome.get(outcome.size()-1).getOutcome().contains("INTERCEPTED")){
             possession++;
             down = 1;
