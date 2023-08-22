@@ -1,7 +1,6 @@
 package com.example.fffController;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Play {
 	private ArrayList<Player> offensivePOIs, defensivePOIs;
@@ -106,7 +105,6 @@ public class Play {
 					if (offensivePOIs.get(tar).getPlayerRatings().get("CAT") - 15 >= (Math.random() * 100)) {
 						gain = offensivePOIs.get(tar).getOverallRating() / qb.getRandomNumber(2, 9);
 						offensivePOIs.get(tar).getStatValues().get("REC YD")[week] += gain;
-						System.out.println(Arrays.toString(offensivePOIs.get(tar).getStatValues().get("REC YD")));
 						offensivePOIs.get(tar).getStatValues().get("REC")[week] += 1;
 						defensivePOIs.get(index).getStatValues().get("TKL")[week] += 1;
 						if(fp - gain <= 0 || fp + gain >= 100){
